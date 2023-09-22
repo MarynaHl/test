@@ -1,4 +1,4 @@
-export const config = {
+exports.config = {
     //
     // ====================
     // Runner Configuration
@@ -51,8 +51,7 @@ export const config = {
     // https://saucelabs.com/platform/platform-configurator
     //
     capabilities: [{
-        // capabilities for local browser web tests
-        browserName: 'chrome' // or "firefox", "microsoftedge", "safari"
+        browserName: 'chrome'
     }],
 
     //
@@ -86,7 +85,7 @@ export const config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-  baseUrl: 'http://localhost:8080',
+    baseUrl: 'http://localhost',
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
@@ -132,8 +131,7 @@ export const config = {
     // See the full list at http://mochajs.org/
     mochaOpts: {
         ui: 'bdd',
-        timeout: 60000,
-        require: ['@babel/register']
+        timeout: 60000
     },
     //
     // =====
