@@ -1,16 +1,7 @@
-import { $ } from '@wdio/globals'
-import Page from './page.js';
+class SecurePage {
+    get flashMessage() { return $('#flash'); }
 
-/**
- * sub page containing specific selectors and methods for a specific page
- */
-class SecurePage extends Page {
-    /**
-     * define selectors using getter methods
-     */
-    get flashAlert () {
-        return $('#flash');
-    }
+    // Додайте методи та елементи для роботи зі сторінкою з обмеженим доступом, якщо необхідно
 }
 
-export default new SecurePage();
+module.exports = new SecurePage();

@@ -1,15 +1,20 @@
-import { expect } from '@wdio/globals'
-import LoginPage from '../pageobjects/login.page.js'
-import SecurePage from '../pageobjects/secure.page.js'
+const LoginPage = require('../pageobjects/login.page');
+const SecurePage = require('../pageobjects/secure.page');
 
-describe('My Login application', () => {
-    it('should login with valid credentials', async () => {
-        await LoginPage.open()
+describe('E2E Test - Valid Login', () => {
+    it('should perform valid login', () => {
+        // Крок 1: Відкрити сторінку входу
+        LoginPage.open();
 
-        await LoginPage.login('tomsmith', 'SuperSecretPassword!')
-        await expect(SecurePage.flashAlert).toBeExisting()
-        await expect(SecurePage.flashAlert).toHaveTextContaining(
-            'You logged into a secure area!')
-    })
-})
+        // Крок 2: Ввести коректний логін та пароль
+        LoginPage.login('standard_user', 'secret_sauce');
 
+        // Перевірка: Переконатися, що користувач був перенаправлений на сторінку з продуктами
+        SecurePage.waitForPageToLoad(); // Це може бути метод з SecurePage
+        expect(browser.getUrl()).toContain('inventory.html');
+
+        // Перевірка: Переконатися, що на сторінці є продукти та кошик
+        expect(SecurePage.isProductsDisplayed()).toBe(true);
+        expect(SecurePage.isCartDisplayed()).toBe(true);
+    });
+});
